@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Data Sell Pro</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #2638d9;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 7px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #3f51e8;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #3f51e8;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2f40d0;
+    }
+
+    .login {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+    }
+
+    .login a {
+      color: #3f51e8;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 12px;
+      background: #fff7e6;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #765500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="logo">DATA SELL PRO</div>
+
+    <p class="subtitle">Create your account</p>
+
+    <form id="registerForm">
+
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your full name"
+        required
+      >
+
+      <label for="mobile">Mobile Number</label>
+      <input
+        type="tel"
+        id="mobile"
+        placeholder="Enter mobile number"
+        required
+      >
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter email"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Create password"
+        required
+      >
+
+      <label for="referral">Referral Code</label>
+      <input
+        type="text"
+        id="referral"
+        placeholder="Enter referral code (optional)"
+      >
+
+      <button type="submit">
+        Create Account
+      </button>
+
+    </form>
+
+    <p class="login">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+
+    <div class="notice">
+      Your account will be connected to the real database after backend setup.
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      alert("Registration page ready. Real account creation will work after backend connection.");
+    });
+  </script>
+
+</body>
+      </html>
