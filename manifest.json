@@ -1,0 +1,19 @@
+{
+  "name": "Data Sell Pro",
+  "short_name": "Data Sell",
+  "description": "Data Sell Pro mobile application",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f9fffc",
+  "theme_color": "#18b77b",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
