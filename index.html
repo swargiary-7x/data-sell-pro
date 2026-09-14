@@ -1699,6 +1699,32 @@ function openPage(page){
 
 }
 
+let deferredInstallPrompt = null;
+
+window.addEventListener("beforeinstallprompt", function(event) {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+});
+
+async function installApp() {
+
+    if (deferredInstallPrompt) {
+
+        deferredInstallPrompt.prompt();
+
+        const result = await deferredInstallPrompt.userChoice;
+
+        console.log("Install result:", result.outcome);
+
+        deferredInstallPrompt = null;
+
+        return;
+    }
+
+    alert(
+        "Install option abhi available nahi hai. Chrome me website kholo aur browser menu se 'Install app' select karo."
+    );
+}
 </script>
 
 
