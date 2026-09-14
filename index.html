@@ -1,256 +1,1220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Sell Pro</title>
 
-  <title>Data Sell Pro</title>
-<link rel="stylesheet" href="style.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ffffff 0%,#f8fffc 55%,#e9f9f2 100%);
+    color:#26332e;
+    min-height:100vh;
+    padding-bottom:82px;
+}
+
+/* INSTALL BAR */
+.install-bar{
+    margin:8px 10px;
+    padding:10px 13px;
+    background:#43b982;
+    color:white;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:11px;
+    box-shadow:0 3px 12px rgba(31,150,100,.18);
+}
+
+.install-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.download-icon{
+    font-size:19px;
+}
+
+.install-title{
+    font-weight:bold;
+}
+
+.install-sub{
+    opacity:.9;
+    margin-top:2px;
+}
+
+.install-btn{
+    background:#36a974;
+    border:1px solid rgba(255,255,255,.3);
+    color:white;
+    padding:7px 15px;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:11px;
+}
+
+/* SECURITY */
+.secure{
+    margin:10px 40px 14px;
+    border:1px solid #a8dec7;
+    background:#edf9f4;
+    color:#3c9c76;
+    border-radius:20px;
+    padding:8px;
+    text-align:center;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+/* HEADER */
+.header{
+    width:92%;
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:10px 0 18px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#19a963;
+    border:3px solid white;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:bold;
+    font-size:9px;
+    text-align:center;
+}
+
+.brand-name{
+    color:#197d50;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.welcome{
+    font-size:10px;
+    color:#777;
+    margin-top:3px;
+}
+
+.online{
+    background:#e2f8ff;
+    color:#1599bd;
+    padding:8px 13px;
+    border-radius:20px;
+    font-size:10px;
+    white-space:nowrap;
+}
+
+.top-buttons{
+    display:flex;
+    gap:6px;
+}
+
+.top-buttons button{
+    background:white;
+    border:1px solid #e3e7e5;
+    border-radius:8px;
+    padding:10px 13px;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.logout{
+    background:#ef4d51!important;
+    color:white!important;
+    border-color:#ef4d51!important;
+}
+
+/* MAIN */
+.container{
+    width:92%;
+    max-width:1000px;
+    margin:auto;
+}
+
+/* WALLET CARD */
+.wallet-card{
+    background:linear-gradient(120deg,#26a567,#239a61);
+    border-radius:13px;
+    color:white;
+    padding:18px 16px;
+    margin-bottom:16px;
+    box-shadow:0 7px 20px rgba(26,155,99,.25);
+    position:relative;
+    overflow:hidden;
+}
+
+.wallet-card:after{
+    content:"";
+    position:absolute;
+    right:-30px;
+    top:-30px;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+}
+
+.wallet-label{
+    font-size:11px;
+    margin-bottom:6px;
+}
+
+.wallet-money{
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* BOX */
+.box{
+    background:rgba(255,255,255,.94);
+    border:1px solid #dfe8e4;
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,.03);
+}
+
+.box-title{
+    font-size:16px;
+    font-weight:bold;
+}
+
+.box-sub{
+    font-size:10px;
+    color:#7d8985;
+    margin-top:4px;
+}
+
+/* OPERATORS */
+.operator-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.available{
+    background:#e4f8ee;
+    color:#27956a;
+    padding:6px 9px;
+    border-radius:15px;
+    font-size:9px;
+}
+
+.operators{
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+}
+
+.operator{
+    min-width:74px;
+    height:92px;
+    border:1px solid #e1e7e4;
+    border-radius:13px;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+}
+
+.operator.active{
+    border:2px solid #20ad73;
+    background:#f0fff8;
+}
+
+.operator-circle{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    font-size:11px;
+}
+
+.jio{background:#12378c;color:white}
+.airtel{color:#ed1c24;font-size:12px}
+.vi{color:#e32935;font-size:14px}
+.bsnl{color:#12649a;font-size:9px}
+.wifi{background:#222;color:white;font-size:10px}
+
+.operator-name{
+    font-size:9px;
+    font-weight:bold;
+}
+
+/* DATA SELLING */
+.data-box{
+    min-height:340px;
+}
+
+.speed-area{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    margin:25px 0 18px;
+}
+
+.meter{
+    width:170px;
+    height:115px;
+    border-radius:170px 170px 0 0;
+    border:12px solid #f0f2f1;
+    border-bottom:0;
+    position:relative;
+}
+
+.needle{
+    position:absolute;
+    width:65px;
+    height:4px;
+    background:#e04e55;
+    left:47px;
+    bottom:16px;
+    transform:rotate(-35deg);
+    transform-origin:left center;
+    border-radius:5px;
+}
+
+.needle-dot{
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:white;
+    border:3px solid #e04e55;
+    border-radius:50%;
+    left:43px;
+    bottom:12px;
+}
+
+.speed-number{
+    position:absolute;
+    left:65px;
+    bottom:-3px;
+    font-size:27px;
+    font-weight:bold;
+}
+
+.mbps{
+    position:absolute;
+    left:70px;
+    bottom:-23px;
+    font-size:9px;
+    color:#777;
+}
+
+.stats{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.stat{
+    width:86px;
+    background:#f5f8f7;
+    border:1px solid #e5eae8;
+    border-radius:9px;
+    padding:10px 5px;
+    text-align:center;
+}
+
+.stat-label{
+    font-size:8px;
+    color:#777;
+}
+
+.stat-value{
+    color:#159c69;
+    font-size:15px;
+    font-weight:bold;
+    margin-top:4px;
+}
+
+.progress{
+    height:8px;
+    background:#edf1ef;
+    border-radius:10px;
+    margin:30px 10px 7px;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#16b779;
+    border-radius:10px;
+}
+
+.network{
+    font-size:8px;
+    color:#6e7773;
+    margin-left:10px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    margin-top:20px;
+}
+
+.start,
+.withdraw{
+    flex:1;
+    border:0;
+    padding:12px;
+    border-radius:9px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.start{
+    background:#13b97d;
+}
+
+.withdraw{
+    background:#ff7417;
+}
+
+/* RECENT */
+.recent{
+    background:#edfffa;
+    border:1px solid #d8eee8;
+    border-radius:15px;
+    padding:15px;
+}
+
+.recent-title{
+    color:#258f6e;
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:9px;
+}
+
+.withdraw-item{
+    background:#dff9f1;
+    border:1px solid #c7eee4;
+    border-radius:11px;
+    padding:12px;
+    margin:6px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.person{
+    font-size:10px;
+    font-weight:bold;
+}
+
+.phone{
+    font-size:8px;
+    color:#777;
+    margin-top:4px;
+}
+
+.amount{
+    font-weight:bold;
+    font-size:11px;
+}
+
+.completed{
+    display:block;
+    margin-top:4px;
+    background:#b9ecd9;
+    color:#18865f;
+    border-radius:10px;
+    padding:3px 7px;
+    font-size:7px;
+    text-align:center;
+}
+
+/* PAGES */
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.back{
+    width:42px;
+    height:42px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    background:white;
+    font-size:20px;
+}
+
+.page-title h1{
+    font-size:28px;
+}
+
+/* WALLET PAGE */
+.big-balance{
+    background:#27995f;
+    color:white;
+    border-radius:15px;
+    padding:30px;
+    margin-bottom:20px;
+}
+
+.big-balance small{
+    font-size:14px;
+}
+
+.big-balance strong{
+    display:block;
+    font-size:48px;
+    margin:20px 0;
+}
+
+.big-withdraw{
+    width:100%;
+    border:0;
+    background:#258d59;
+    color:white;
+    padding:16px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.transaction{
+    padding:18px;
+    border:1px solid #dfe6e3;
+    border-radius:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.earning{
+    color:#22995f;
+    font-weight:bold;
+}
+
+/* REFER */
+.ref-card{
+    text-align:center;
+    padding:25px;
+}
+
+.ref-code{
+    margin:15px 0;
+    padding:15px;
+    background:#f0f8f5;
+    border:1px solid #cfe7dc;
+    border-radius:10px;
+    color:#269b6b;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.share-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.share-buttons button{
+    padding:12px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+/* KYC */
+.kyc-status{
+    text-align:center;
+    padding:35px 15px;
+}
+
+.shield{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#effaf5;
+    border:3px solid #d4eee3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto auto 18px;
+    font-size:27px;
+}
+
+.green-button{
+    width:100%;
+    background:#27a96e;
+    color:white;
+    border:0;
+    padding:14px;
+    border-radius:9px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.why-item{
+    padding:10px 0;
+    font-size:11px;
+}
+
+/* PROFILE */
+.profile-card{
+    padding:20px;
+}
+
+.profile-row{
+    background:#f7faf9;
+    border:1px solid #e1e8e5;
+    border-radius:10px;
+    padding:13px;
+    margin:8px 0;
+}
+
+.profile-label{
+    color:#75817c;
+    font-size:9px;
+}
+
+.profile-value{
+    font-weight:bold;
+    font-size:11px;
+    margin-top:4px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:70px;
+    background:white;
+    border-top:1px solid #e1e7e4;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:100;
+}
+
+.nav-item{
+    width:65px;
+    text-align:center;
+    color:#66736e;
+    font-size:9px;
+    cursor:pointer;
+    padding:7px 4px;
+    border-radius:13px;
+}
+
+.nav-icon{
+    display:block;
+    font-size:19px;
+    margin-bottom:3px;
+}
+
+.nav-item.active{
+    background:#16b879;
+    color:white;
+    box-shadow:0 4px 14px rgba(22,184,121,.3);
+}
+
+/* CHAT */
+.chat{
+    position:fixed;
+    right:15px;
+    bottom:85px;
+    width:45px;
+    height:45px;
+    background:#20ae72;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .header{
+        align-items:center;
     }
 
-    body {
-      background: #f5f7fb;
-      color: #111827;
+    .online{
+        display:none;
     }
 
-    .app {
-      max-width: 480px;
-      margin: auto;
-      min-height: 100vh;
-      background: #ffffff;
+    .top-buttons button{
+        padding:8px;
+        font-size:9px;
     }
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 22px 20px;
-      border-radius: 0 0 22px 22px;
+    .logout{
+        display:none;
     }
 
-    header h1 {
-      font-size: 24px;
-      margin-bottom: 6px;
+    .speed-area{
+        gap:12px;
     }
 
-    header p {
-      color: #cbd5e1;
-      font-size: 14px;
+    .meter{
+        transform:scale(.85);
+        margin-right:-10px;
     }
 
-    .balance {
-      margin: 20px;
-      padding: 22px;
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
-      color: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(37, 99, 235, .20);
+    .page-title h1{
+        font-size:25px;
     }
 
-    .balance small {
-      opacity: .85;
+    .big-balance strong{
+        font-size:43px;
+    }
+}
+
+@media(min-width:800px){
+    .container{
+        max-width:1000px;
     }
 
-    .balance h2 {
-      font-size: 32px;
-      margin-top: 8px;
+    .bottom-nav{
+        width:700px;
+        left:50%;
+        transform:translateX(-50%);
+        border-radius:18px 18px 0 0;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      padding: 0 20px;
-    }
-
-    .action {
-      border: 1px solid #e5e7eb;
-      background: white;
-      padding: 14px 5px;
-      border-radius: 14px;
-      text-align: center;
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    .action .icon {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 7px;
-    }
-
-    .section {
-      padding: 25px 20px 0;
-    }
-
-    .section h3 {
-      margin-bottom: 14px;
-      font-size: 18px;
-    }
-
-    .card {
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 15px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-title {
-      font-weight: bold;
-      margin-bottom: 4px;
-    }
-
-    .card-sub {
-      font-size: 12px;
-      color: #6b7280;
-    }
-
-    .amount {
-      color: #16a34a;
-      font-weight: bold;
-    }
-
-    .verified {
-      color: #16a34a;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .bottom {
-      margin-top: 30px;
-      padding: 18px;
-      text-align: center;
-      color: #6b7280;
-      font-size: 12px;
-      border-top: 1px solid #e5e7eb;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<!-- INSTALL -->
+<div class="install-bar">
+    <div class="install-left">
+        <div class="download-icon">↓</div>
+        <div>
+            <div class="install-title">Download Now</div>
+            <div class="install-sub">Install the app for best experience</div>
+        </div>
+    </div>
+    <button class="install-btn">INSTALL</button>
+</div>
 
-    <header>
-      <h1>DATA SELL PRO</h1>
-      <p>Welcome to your dashboard</p>
-    </header>
+<!-- SECURITY -->
+<div class="secure">♢ &nbsp; SECURE PLATFORM</div>
 
-    <div class="balance">
-      <small>Available Wallet Balance</small>
-      <h2>₹1,250.00</h2>
+<!-- HEADER -->
+<header class="header">
+    <div class="brand">
+        <div class="logo">DATA<br>SELL</div>
+        <div>
+            <div class="brand-name">Data Sell</div>
+            <div class="welcome">Welcome, Speedy xt 👋</div>
+        </div>
     </div>
 
-    <div class="grid">
+    <div class="online">● 6,271 online</div>
 
-      <div class="action">
-        <span class="icon">💰</span>
+    <div class="top-buttons">
+        <button onclick="showPage('wallet')">▣ Wallet</button>
+        <button>◷ History</button>
+        <button onclick="showPage('kyc')">♧ KYC</button>
+        <button class="logout">↪ Logout</button>
+    </div>
+</header>
+
+
+<main class="container">
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+    <div class="wallet-card">
+        <div class="wallet-label">▣ &nbsp; Wallet Balance</div>
+        <div class="wallet-money">₹21.36</div>
+    </div>
+
+    <!-- OPERATOR -->
+    <div class="box">
+        <div class="operator-head">
+            <div>
+                <div class="box-title">Select Operator</div>
+                <div class="box-sub">All India SIM providers</div>
+            </div>
+            <div class="available">5 available</div>
+        </div>
+
+        <div class="operators">
+
+            <div class="operator active" onclick="selectOperator(this)">
+                <div class="operator-circle jio">Jio</div>
+                <div class="operator-name">Jio</div>
+            </div>
+
+            <div class="operator" onclick="selectOperator(this)">
+                <div class="operator-circle airtel">airtel</div>
+                <div class="operator-name">Airtel</div>
+            </div>
+
+            <div class="operator" onclick="selectOperator(this)">
+                <div class="operator-circle vi">Vi</div>
+                <div class="operator-name">Vi</div>
+            </div>
+
+            <div class="operator" onclick="selectOperator(this)">
+                <div class="operator-circle bsnl">BSNL</div>
+                <div class="operator-name">BSNL</div>
+            </div>
+
+            <div class="operator" onclick="selectOperator(this)">
+                <div class="operator-circle wifi">WiFi</div>
+                <div class="operator-name">WiFi</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- DATA SELL -->
+    <div class="box data-box">
+
+        <div class="box-title">Data Selling</div>
+        <div class="box-sub">Share consent-based data to earn money</div>
+
+        <div class="speed-area">
+
+            <div class="meter">
+                <div class="needle"></div>
+                <div class="needle-dot"></div>
+                <div class="speed-number" id="speed">00</div>
+                <div class="mbps">MBPS</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-label">Data Sold</div>
+                    <div class="stat-value" id="dataSold">0.00</div>
+                    <div class="stat-label">MB</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">Earnings</div>
+                    <div class="stat-value" id="earnings">₹0.00</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="progress">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <div class="network">Network Speed</div>
+
+        <div class="actions">
+            <button class="start" id="startBtn" onclick="startSelling()">▷ &nbsp; Start</button>
+            <button class="withdraw" onclick="showPage('wallet')">▣ &nbsp; Withdraw</button>
+        </div>
+
+    </div>
+
+
+    <!-- RECENT -->
+    <div class="recent">
+
+        <div class="recent-title">✓ Recent Withdrawals</div>
+
+        <div class="withdraw-item">
+            <div>
+                <div class="person">Vikram Joshi</div>
+                <div class="phone">vi***@jpay • 39 min ago</div>
+            </div>
+            <div>
+                <div class="amount">₹4,100</div>
+                <span class="completed">Completed</span>
+            </div>
+        </div>
+
+        <div class="withdraw-item">
+            <div>
+                <div class="person">Swati Agarwal</div>
+                <div class="phone">sw***@iphone • 1 hr ago</div>
+            </div>
+            <div>
+                <div class="amount">₹1,100</div>
+                <span class="completed">Completed</span>
+            </div>
+        </div>
+
+        <div class="withdraw-item">
+            <div>
+                <div class="person">Aman Verma</div>
+                <div class="phone">am***@paytm • 52 min ago</div>
+            </div>
+            <div>
+                <div class="amount">₹2,000</div>
+                <span class="completed">Completed</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WALLET -->
+<section id="wallet" class="page">
+
+    <div class="page-title">
+        <button class="back" onclick="showPage('home')">←</button>
+        <div class="logo">DATA<br>SELL</div>
+        <h1>Wallet</h1>
+    </div>
+
+    <div class="big-balance">
+        <small>Current Balance</small>
+        <strong>₹21.36</strong>
+        <button class="big-withdraw">Withdraw Money</button>
+    </div>
+
+    <div class="box">
+        <div class="box-title">Transaction History</div>
+        <div class="box-sub">All your wallet transactions</div>
+
+        <div class="transaction" style="margin-top:20px;">
+            <div>
+                <b>↓ &nbsp; Earnings</b>
+                <div class="box-sub">Data sold via selected operator</div>
+                <div class="box-sub">13/09/2026, 09:21:43</div>
+            </div>
+            <div class="earning">+₹21.36</div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- REFER -->
+<section id="refer" class="page">
+
+    <div class="page-title">
+        <button class="back" onclick="showPage('home')">←</button>
+        <h1>Refer & Earn</h1>
+    </div>
+
+    <div class="box ref-card">
+        <div style="font-size:35px;color:#29a66f;">✓</div>
+
+        <h2 style="margin-top:15px;">Refer & Earn ₹300</h2>
+        <p class="box-sub">Earn rewards when friends join</p>
+
+        <div style="text-align:left;margin-top:25px;font-size:9px;">
+            YOUR REFERRAL CODE
+        </div>
+
+        <div class="ref-code">REF928383</div>
+
+        <div style="text-align:left;font-size:9px;">
+            YOUR REFERRAL LINK
+        </div>
+
+        <div class="ref-code" style="font-size:10px;letter-spacing:0;">
+            https://data-sell-pro.example/ref=REF928383
+        </div>
+
+        <div class="share-buttons">
+            <button>🟢 WhatsApp</button>
+            <button>🔵 Telegram</button>
+            <button>🔵 Facebook</button>
+            <button onclick="copyReferral()">✓ Copy Link</button>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-title">✓ How to Earn Cash</div>
+
+        <div class="why-item">① &nbsp; <b>Invite Friends</b><br>
+        <span class="box-sub">Send your referral link to friends</span></div>
+
+        <div class="why-item">② &nbsp; <b>They Join & Verify</b><br>
+        <span class="box-sub">Friends sign up and complete verification</span></div>
+
+        <div class="why-item">③ &nbsp; <b>Get Paid</b><br>
+        <span class="box-sub">Rewards are credited after eligibility checks</span></div>
+    </div>
+
+</section>
+
+
+<!-- KYC -->
+<section id="kyc" class="page">
+
+    <div class="page-title">
+        <button class="back" onclick="showPage('home')">←</button>
+        <h1>KYC Status</h1>
+    </div>
+
+    <div class="box kyc-status">
+
+        <div class="shield">♢</div>
+
+        <h2>KYC Not Started</h2>
+        <p class="box-sub">Complete verification to unlock eligible account features</p>
+
+        <button class="green-button">
+            Start KYC Verification
+        </button>
+
+    </div>
+
+    <div class="box">
+        <div class="box-title">Why KYC is Required</div>
+
+        <div class="why-item">✓ &nbsp; <b>Withdraw Money</b><br>
+        <span class="box-sub">Verification may be required for withdrawals</span></div>
+
+        <div class="why-item">✓ &nbsp; <b>Faster Processing</b><br>
+        <span class="box-sub">Verified accounts can receive eligible processing</span></div>
+
+        <div class="why-item">✓ &nbsp; <b>Higher Limits</b><br>
+        <span class="box-sub">Applicable account limits depend on verification</span></div>
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="profile" class="page">
+
+    <div class="page-title">
+        <button class="back" onclick="showPage('home')">←</button>
+        <h1>Profile</h1>
+    </div>
+
+    <div class="box profile-card">
+
+        <div class="profile-row">
+            <div class="profile-label">Name</div>
+            <div class="profile-value">Speedy xt</div>
+        </div>
+
+        <div class="profile-row">
+            <div class="profile-label">Mobile Number</div>
+            <div class="profile-value">******8957</div>
+        </div>
+
+        <div class="profile-row">
+            <div class="profile-label">Joined Date</div>
+            <div class="profile-value">13 Sep 2026</div>
+        </div>
+
+    </div>
+
+    <div class="box">
+        <div class="box-title">✓ How It Works</div>
+
+        <div class="why-item">① &nbsp; <b>Sell Eligible Data</b><br>
+        <span class="box-sub">Only share data you are authorized and have consent to share.</span></div>
+
+        <div class="why-item">② &nbsp; <b>Refer & Earn</b><br>
+        <span class="box-sub">Invite friends using your referral link.</span></div>
+
+        <div class="why-item">③ &nbsp; <b>KYC Verification</b><br>
+        <span class="box-sub">Complete verification through the approved process.</span></div>
+
+        <div class="why-item">④ &nbsp; <b>Secure Platform</b><br>
+        <span class="box-sub">Account and transaction information is protected.</span></div>
+    </div>
+
+    <div class="box">
+        <div class="box-title">✓ Account Settings</div>
+
+        <div class="profile-row">
+            <b>♢ &nbsp; KYC Status</b>
+            <span style="float:right;color:#c99b25;">Not Verified</span>
+        </div>
+
+        <div class="profile-row">
+            🔒 &nbsp; Change Password
+            <span style="float:right;color:#888;">Edit ›</span>
+        </div>
+
+        <button style="width:100%;padding:13px;border:1px solid #f0cccc;background:#fff4f4;color:#d65a5a;border-radius:9px;">
+            ↪ Logout
+        </button>
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- CHAT -->
+<div class="chat">◔</div>
+
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+    <div class="nav-item active" onclick="showPage('home')">
+        <span class="nav-icon">⌂</span>
+        Home
+    </div>
+
+    <div class="nav-item" onclick="showPage('wallet')">
+        <span class="nav-icon">▣</span>
         Wallet
-      </div>
+    </div>
 
-      <div class="action">
-        <span class="icon">👥</span>
+    <div class="nav-item" onclick="showPage('refer')">
+        <span class="nav-icon">♧</span>
         Refer
-      </div>
+    </div>
 
-      <div class="action">
-        <span class="icon">✓</span>
+    <div class="nav-item" onclick="showPage('kyc')">
+        <span class="nav-icon">♢</span>
         KYC
-      </div>
+    </div>
 
-      <div class="action">
-        <span class="icon">👤</span>
+    <div class="nav-item" onclick="showPage('profile')">
+        <span class="nav-icon">♙</span>
         Profile
-      </div>
-
     </div>
 
-    <div class="section">
+</nav>
 
-      <h3>Account Status</h3>
 
-      <div class="card">
-        <div>
-          <div class="card-title">KYC Verification</div>
-          <div class="card-sub">Identity verification status</div>
-        </div>
+<script>
 
-        <div class="verified">✓ Verified</div>
-      </div>
+function showPage(page){
 
-    </div>
+    document.querySelectorAll(".page").forEach(function(p){
+        p.classList.remove("active");
+    });
 
-    <div class="section">
+    document.getElementById(page).classList.add("active");
 
-      <h3>Overview</h3>
+    document.querySelectorAll(".nav-item").forEach(function(item){
+        item.classList.remove("active");
+    });
 
-      <div class="card">
-        <div>
-          <div class="card-title">Total Referrals</div>
-          <div class="card-sub">Users referred by you</div>
-        </div>
+    const navItems = document.querySelectorAll(".nav-item");
 
-        <strong>12</strong>
-      </div>
+    const pages = ["home","wallet","refer","kyc","profile"];
+    const index = pages.indexOf(page);
 
-      <div class="card">
-        <div>
-          <div class="card-title">Total Earnings</div>
-          <div class="card-sub">Your lifetime earnings</div>
-        </div>
-
-        <strong>₹2,850</strong>
-      </div>
-
-    </div>
-
-    <div class="section">
-
-      <h3>Recent Activity</h3>
-
-      <div class="card">
-        <div>
-          <div class="card-title">Referral Bonus</div>
-          <div class="card-sub">Today</div>
-        </div>
-
-        <div class="amount">+₹100</div>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-title">Data Sale Earnings</div>
-          <div class="card-sub">Today</div>
-        </div>
-
-        <div class="amount">+₹250</div>
-      </div>
-
-    </div>
-
-    <div class="bottom">
-      © 2026 Data Sell Pro
-    </div>
-
-  </div>
-  <script>
-document.querySelectorAll("a, button").forEach(function(element) {
-    if (element.textContent.trim().toLowerCase() === "login") {
-        element.addEventListener("click", function(e) {
-            e.preventDefault();
-            window.location.href = "login.html";
-        });
+    if(index >= 0){
+        navItems[index].classList.add("active");
     }
-});
-  </script>
-<script src="script.js"></script>
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+function selectOperator(element){
+
+    document.querySelectorAll(".operator").forEach(function(op){
+        op.classList.remove("active");
+    });
+
+    element.classList.add("active");
+}
+
+
+let running = false;
+let timer;
+
+function startSelling(){
+
+    if(running) return;
+
+    running = true;
+
+    const button = document.getElementById("startBtn");
+    const speed = document.getElementById("speed");
+    const data = document.getElementById("dataSold");
+    const earnings = document.getElementById("earnings");
+    const progress = document.getElementById("progress");
+
+    button.innerHTML = "■ &nbsp; Running";
+
+    let seconds = 0;
+
+    timer = setInterval(function(){
+
+        seconds++;
+
+        let speedValue = Math.floor(Math.random()*70)+10;
+        let dataValue = (seconds * 0.12).toFixed(2);
+        let earningValue = (seconds * 0.01).toFixed(2);
+
+        speed.textContent = speedValue;
+        data.textContent = dataValue;
+        earnings.textContent = "₹" + earningValue;
+
+        progress.style.width = Math.min(seconds,100) + "%";
+
+    },1000);
+}
+
+
+function copyReferral(){
+
+    navigator.clipboard.writeText(
+        "https://data-sell-pro.example/ref=REF928383"
+    );
+
+    alert("Referral link copied!");
+}
+
+</script>
+
 </body>
-                              </html>
+                                                        </html>
