@@ -170,14 +170,72 @@
     </div>
 
   </div>
+<script>
+const API_URL = "https://data-sell-pro.onrender.com";
 
-  <script>
-    document.getElementById("registerForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+document.getElementById("registerForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-      alert("Registration page ready. Real account creation will work after backend connection.");
-    });
-  </script>
+    const full_name = document.getElementById("name").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const referred_by = document.getElementById("referral").value.trim();
+
+    if (!full_name || !mobile || !email || !password) {
+        alert("Please fill all required fields.");
+        return;
+    }
+
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters.");
+        return;
+    }
+
+    const button = document.querySelector("#registerForm button[type='submit']");
+    button.disabled = true;
+    button.textContent = "Creating Account...";
+
+    try {
+        const response = await fetch(`${API_URL}/api/auth/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                full_name,
+                mobile,
+                email,
+                password,
+                referred_by
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            alert(data.message || "Registration failed.");
+            return;
+        }
+
+        // Save login token
+        localStorage.setItem("dataSellToken", data.token);
+
+        alert("Account created successfully!");
+
+        // Go to main website
+        window.location.href = "index.html";
+
+    } catch (error) {
+        console.error("Registration error:", error);
+        alert("Server se connection nahi ho pa raha. Thodi der baad try karo.");
+    } finally {
+        button.disabled = false;
+        button.textContent = "Create Account";
+    }
+});
+</script>
+  
 
 </body>
       </html>
